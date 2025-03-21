@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import { Text, View, Image } from "react-native";
 
 
@@ -9,8 +10,9 @@ export default function DoctorCard() {
       marginBottom: 15,
       padding: 10,
       borderRadius: 5,
-      backgroundColor: 'white',
-      flexDirection: 'row'
+      backgroundColor: 'rgb(255, 255, 255)',
+      flexDirection: 'row',
+      elevation: 3,
     }}>
       <View style={{ flexWrap: "wrap", marginRight: 20 }}>
         <Image
@@ -43,16 +45,16 @@ export default function DoctorCard() {
           textTransform: "capitalize"
         }}>Time: 8AM - 9PM</Text>
 
-        <View style={{ marginTop: 25, flexDirection: 'row' }}>
+        <View style={{ marginTop: 25, flexDirection: 'row', justifyContent: "flex-end"}}>
           <Text style={{
             fontSize: 20,
             fontWeight: 100,
             marginRight: 15
-          }}>Phone</Text>
+          }}><Ionicons name="call" size={25} color={'black'} /></Text>
           <Text style={{
             fontSize: 20,
             fontWeight: 100
-          }}>Email</Text>
+          }}><Ionicons name="mail" size={25} color={'black'} /></Text>
         </View>
       </View>
     </View>

@@ -37,7 +37,7 @@ export default function CustomDrawerContent(props: any) {
                     onPress={() => {
                         return;
                     }}
-                    icon={({ size, color }) => (<Ionicons name="lock-l" size={size} color={color} />)}
+                    icon={({ size, color }) => (<Ionicons name="power-outline" size={size} color={color} />)}
                 />
             </DrawerContentScrollView>
         </View>
