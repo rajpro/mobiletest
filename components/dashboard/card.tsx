@@ -11,7 +11,8 @@ export default function card(props: CardProps) {
         marginRight:15,
         padding: 10,
         borderRadius:5,
-        backgroundColor: 'white',
+        backgroundColor: 'rgb(255, 255, 255)',
+        elevation: 3,
         flex:1
     }}>
         <Text style={{

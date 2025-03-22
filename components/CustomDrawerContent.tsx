@@ -1,9 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
+import { useRouter } from "expo-router";
 import { Image, Text, View } from "react-native";
 
 
 export default function CustomDrawerContent(props: any) {
+    const router = useRouter();
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView
@@ -24,14 +26,18 @@ export default function CustomDrawerContent(props: any) {
                         margin: 5
                     }}>Rajesh Sardar</Text>
                 </View>
-                <DrawerItemList {...props} />
-                <View
-                    style={{
-                        borderBottomColor: '#e0e0e0',
-                        borderBottomWidth: 1,
-                        marginTop: 50,
-                        marginBottom: 10
+                
+                <DrawerItem label={'Dashboard'}
+                    onPress={() => {
+                        return router.push("/(stacks)");
                     }}
+                    icon={({ size, color }) => (<Ionicons name="home-outline" size={size} color={color} />)}
+                />
+                <DrawerItem label={'Doctors'}
+                    onPress={() => {
+                        return router.push("/(doctor)");
+                    }}
+                    icon={({ size, color }) => (<Ionicons name="medkit-outline" size={size} color={color} />)}
                 />
                 <DrawerItem label={'Logout'}
                     onPress={() => {
