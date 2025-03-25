@@ -1,3 +1,4 @@
+import useUserHook from "@/hooks/useUserHook";
 import { Ionicons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
 import { useRouter } from "expo-router";
@@ -5,6 +6,7 @@ import { Image, Text, View } from "react-native";
 
 
 export default function CustomDrawerContent(props: any) {
+    const {logout} = useUserHook();
     const router = useRouter();
     return (
         <View style={{ flex: 1 }}>
@@ -41,7 +43,7 @@ export default function CustomDrawerContent(props: any) {
                 />
                 <DrawerItem label={'Logout'}
                     onPress={() => {
-                        return;
+                        return logout();
                     }}
                     icon={({ size, color }) => (<Ionicons name="power-outline" size={size} color={color} />)}
                 />

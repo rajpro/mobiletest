@@ -1,9 +1,13 @@
+import { DoctorModel } from "@/models/doctorModel";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View, Image } from "react-native";
 
+interface DoctorProps{
+  doctor: DoctorModel
+}
 
+export default function DoctorCard({doctor}: DoctorProps) {
 
-export default function DoctorCard() {
   return (
     <View style={{
       marginHorizontal: 15,
@@ -24,12 +28,12 @@ export default function DoctorCard() {
         <Text style={{
           fontSize: 24,
           fontWeight: 600
-        }}>Rajesh Sardar</Text>
+        }}>{doctor.name}</Text>
         <Text style={{
           fontSize: 14,
           fontWeight: 200,
           textTransform: "capitalize"
-        }}>medicine specialist</Text>
+        }}>{doctor.department}</Text>
 
         <Text style={{
           marginTop: 10,

@@ -1,20 +1,44 @@
 import DoctorCard from '@/components/dashboard/DoctorCard';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useRouter } from "expo-router";
+import { useEffect } from 'react';
+import useDoctorHook from '@/hooks/useDoctorHook';
 
 export default function DoctorScreen() {
+  const { doctors, loading, fetchDoctors } = useDoctorHook();
   const router = useRouter();
 
-  var doctorCards = [];
-  for (let index = 0; index < 15; index++) {
-    doctorCards.push(<DoctorCard key={index} />);
+  useEffect(() => {
+    fetchDoctors();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={{
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1
+      }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
   }
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        {doctorCards}
+        {doctors.length > 0 ? (
+          doctors.map((doctor, index) => (
+            <DoctorCard key={index} doctor={doctor} />
+          ))
+        ) : (
+          <Text style={{
+            textAlign: "center",
+            fontSize: 18,
+            color: "#888"
+          }}>No doctors available</Text>
+        )}
       </ScrollView>
       <TouchableOpacity style={{
         position: "absolute",
